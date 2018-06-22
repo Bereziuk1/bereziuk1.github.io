@@ -1,0 +1,93 @@
+<html>
+<meta charset="UTF-8" />
+<head>
+<title>Конвертер валют</title>
+<link href="style.css" rel="stylesheet" media="all" />
+</head>
+
+<ul class="navigation">
+    <li class="nav-item"><a href="курс.html">Курс</a></li>
+	<li class="nav-item"><a href="про.html">Конвертер валют</a></li>
+  
+</ul>
+
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div class="site-wrap">
+    	<center><h1><font face="italic">Конвертер валют</h1></font></center>
+  
+  <tbody>
+  <html>
+    <head>
+    <head/>
+    <body>
+        <form>
+            <label>Оберіть вихідну валюту:</label>
+            <select name="from" id="from">
+                <option value="0" selected="selected">Долар США</option>
+                <option value="1">Євро</option>
+                <option value="2">Українські гривні</option>
+				<option value="3">Польський злотий</option>
+				<option value="4">Російський рубль</option>
+            </select>
+            <br/>
+            <br/>
+            <label>Введіть суму: </label>
+            <input name="cash" id="cash" class="is" type="text"/>
+            <br/>
+            <br/>
+            <label>Виберіть розрахункову валюту: </label>
+            <select name="to" id="to">
+                <option value="0">Долар США</option>
+                <option value="1">Євро</option>
+                <option value="2" selected="selected" >Українські гривні</option>
+				<option value="3">Польський злотий</option>
+				<option value="4">Російський рубль</option>
+            </select>
+            <br/>
+            <br/>
+            <input type=button value="Порахувати" onclick='GiveResult();'>
+            <br/>
+            <br/>
+            <label><span id="result" class="result"></span></label>
+        </form>
+        <script type="text/javascript">
+            c = new Array();
+            n = new Array();
+            c[0] = 1;
+            n[0] = "USD";
+            c[1] = 0.86;
+            n[1] = "EUR";
+            c[2] = 26.49;
+            n[2] = "UAH";
+			c[3] = 3.73;
+			n[3] = "PLN";
+			c[4] = 63.62
+			n[4] ="RUB";
+            function GiveResult()
+            {
+                var res, vfrom, vto, vcash;
+                vcash = document.getElementById("cash").value;
+                vfrom = document.getElementById("from").value;
+                vcash = vcash.replace(',', '\.');
+                vcash = vcash.replace(' ', '');
+                vcash = vcash.replace(' ', '');
+                vto = document.getElementById("to").value;
+                res = c[vto] * vcash / c[vfrom], 2;
+ 
+                res = res.toFixed(2);
+                res = res.toString();
+                res = res.replace('\.', ',');
+                res = "<span class='result'> Результат переводу: " + res + "</span>&nbsp;" + n[vto];
+            
+                document.getElementById("result").innerHTML = res;
+            }
+        </script>
+    </body>
+</html>
+	</tbody>
+</div>
+</body>
+</html>
